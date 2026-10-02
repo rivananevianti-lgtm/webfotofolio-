@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Portfolio — Liquid Glass</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:white;
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 10% 20%, #5edcff 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, #8c7bff 0%, transparent 30%),
+        radial-gradient(circle at 50% 100%, #4d8dff 0%, transparent 35%),
+        #07152f;
+}
+
+/* =========================
+   BACKGROUND BUBBLES
+========================= */
+
+.bubble{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.35;
+    z-index:-1;
+    animation:float 10s infinite ease-in-out;
+}
+
+.bubble1{
+    width:220px;
+    height:220px;
+    background:#4eeaff;
+    top:10%;
+    left:-70px;
+}
+
+.bubble2{
+    width:280px;
+    height:280px;
+    background:#7967ff;
+    right:-100px;
+    top:35%;
+    animation-delay:2s;
+}
+
+.bubble3{
+    width:180px;
+    height:180px;
+    background:#3ba8ff;
+    bottom:5%;
+    left:25%;
+    animation-delay:4s;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(40px,-50px);
+    }
+}
+
+/* =========================
+   GLASS
+========================= */
+
+.glass{
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
+    box-shadow:
+        inset 0 1px 1px rgba(255,255,255,.25),
+        0 20px 50px rgba(0,0,0,.15);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:90%;
+    max-width:1100px;
+
+    padding:15px 25px;
+
+    border-radius:30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#7deaff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#72eaff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+section{
+    padding:110px 8%;
+    min-height:100vh;
+}
+
+.hero{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero-box{
+    max-width:850px;
+    padding:50px 30px;
+    border-radius:40px;
+}
+
+.small-title{
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:30px;
+    margin-bottom:20px;
+
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.25);
+
+    color:#a8f3ff;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,85px);
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#72eaff;
+    text-shadow:0 0 30px rgba(114,234,255,.5);
+}
+
+.hero p{
+    color:#c9d9ef;
+    max-width:650px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.buttons{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:13px 25px;
+    margin:5px;
+
+    border-radius:30px;
+
+    text-decoration:none;
+    color:white;
+
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.3);
+
+    backdrop-filter:blur(15px);
+
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.22);
+    box-shadow:0 10px 30px rgba(76,220,255,.2);
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.title h2{
+    font-size:40px;
+}
+
+.title p{
+    color:#a9bedb;
+    margin-top:8px;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:30px;
+    align-items:center;
+}
+
+.profile{
+    padding:20px;
+    border-radius:35px;
+    text-align:center;
+}
+
+.profile img{
+    width:100%;
+    height:350px;
+    object-fit:cover;
+    border-radius:25px;
+}
+
+.profile h3{
+    margin-top:18px;
+}
+
+.about-text{
+    padding:35px;
+    border-radius:35px;
+}
+
+.about-text p{
+    color:#c8d8ec;
+    line-height:1.9;
+}
+
+.info{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:25px;
+}
+
+.info span{
+    padding:8px 15px;
+    border-radius:20px;
+
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.skill{
+    padding:30px;
+    border-radius:30px;
+    transition:.4s;
+}
+
+.skill:hover{
+    transform:translateY(-10px);
+    border-color:#76eaff;
+}
+
+.skill-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.skill h3{
+    margin-bottom:8px;
+}
+
+.skill p{
+    color:#aebfd8;
+    font-size:14px;
+}
+
+.progress{
+    height:8px;
+    background:rgba(255,255,255,.1);
+    border-radius:20px;
+    margin-top:20px;
+    overflow:hidden;
+}
+
+.progress span{
+    display:block;
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#42dcff,#8c7bff);
+}
+
+/* =========================
+   PROJECT
+========================= */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.project{
+    border-radius:30px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.project:hover{
+    transform:translateY(-10px);
+}
+
+.project img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.project-content{
+    padding:22px;
+}
+
+.project-content p{
+    color:#aec1db;
+    font-size:14px;
+    margin-top:8px;
+}
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery{
+    columns:3 250px;
+    column-gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    margin-bottom:20px;
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+    box-shadow:0 15px 40px rgba(71,213,255,.2);
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact{
+    max-width:750px;
+    margin:auto;
+    padding:35px;
+    border-radius:35px;
+}
+
+.contact input,
+.contact textarea{
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    color:white;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder{
+    color:#a9bad2;
+}
+
+.contact textarea{
+    height:140px;
+    resize:none;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:30px;
+
+    color:#a8bdd8;
+
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    nav{
+        width:94%;
+    }
+
+    nav ul{
+        display:none;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .skills,
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:100px 5%;
+    }
+
+    .hero-box{
+        padding:35px 20px;
+    }
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bubble bubble1"></div>
+<div class="bubble bubble2"></div>
+<div class="bubble bubble3"></div>
+
+
+<!-- NAVBAR -->
+
+<nav class="glass">
+
+    <div class="logo">
+        My<span>Portfolio</span> ✦
+    </div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-box glass reveal">
+
+        <div class="small-title">
+            ✦ Welcome to my portfolio
+        </div>
+
+        <h1>
+            Hello, I'm<br>
+            <span>Rivana Nevianti</span>
+        </h1>
+
+        <p>
+            Pelajar kreatif yang tertarik dengan dunia
+            teknologi, desain, coding, dan berbagai
+            hal kreatif lainnya.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#projects" class="btn">
+                Explore My Work →
+            </a>
+
+            <a href="#contact" class="btn">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="title reveal">
+        <h2>About Me</h2>
+        <p>Get to know me better</p>
+    </div>
+
+    <div class="about">
+
+        <div class="profile glass reveal">
+
+            <img src="fotoku.jpg">
+
+            <h3>Nama Kamu</h3>
+
+            <p style="color:#9eb5d1;">
+                Student • Designer • Developer
+            </p>
+
+        </div>
+
+
+        <div class="about-text glass reveal">
+
+            <h2>Hello 👋</h2>
+
+            <br>
+
+            <p>
+                Halo! Saya adalah seorang pelajar yang
+                suka mempelajari teknologi dan membuat
+                berbagai karya digital.
+            </p>
+
+            <br>
+
+            <p>
+                Saya tertarik dengan website development,
+                UI/UX design, editing, photography,
+                dan kreativitas digital.
+            </p>
+
+            <div class="info">
+
+                <span>💻 Coding</span>
+                <span>🎨 Design</span>
+                <span>📸 Photography</span>
+                <span>🎬 Editing</span>
+                <span>🚀 Technology</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+    <div class="title reveal">
+
+        <h2>My Skills</h2>
+
+        <p>Things I love learning</p>
+
+    </div>
+
+
+    <div class="skills">
+
+        <div class="skill glass reveal">
+
+            <div class="skill-icon">💻</div>
+
+            <h3>HTML & CSS</h3>
+
+            <p>
+                Membuat website modern
+                dengan desain menarik.
+            </p>
+
+            <div class="progress">
+                <span style="width:90%"></span>
+            </div>
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="title reveal">
+
+        <h2>My Projects</h2>
+
+        <p>Some things I've created</p>
+
+    </div>
+
+
+    <div class="projects">
+
+        <div class="project glass reveal">
+
+            <img src="fotofolio.jpg">
+
+            <div class="project-content">
+
+                <h3>Foto Folio</h3>
+
+                <p>
+                    Website portfolio pribadi
+                    dengan desain modern.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project glass reveal">
+
+            <img src="desainfigma.jpg">
+
+            <div class="project-content">
+
+                <h3>Desain Figma</h3>
+
+                <p>
+                    Konsep desain figma.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="project glass reveal">
+
+            <img src="tabelhtml.jpg">
+
+            <div class="project-content">
+
+                <h3>Tabel html</h3>
+
+                <p>
+                    Konsep tabel html.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <div class="title reveal">
+
+        <h2>Gallery</h2>
+
+        <p>A collection of beautiful moments</p>
+
+    </div>
+
+
+    <div class="gallery">
+
+        <img class="reveal"
+        src="fotosamateman.jpeg">
+
+        <img class="reveal"
+        src="fotosamateman1.jpeg">
+
+        <img class="reveal"
+        src="fotosamateman2.jpeg">
+
+        
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="title reveal">
+
+        <h2>Let's Connect</h2>
+
+        <p>Have something to say? Send me a message.</p>
+
+    </div>
+
+
+    <div class="contact glass reveal">
+
+        <input
+        type="text"
+        placeholder="Your Name">
+
+        <input
+        type="email"
+        placeholder="Your Email">
+
+        <textarea
+        placeholder="Your Message"></textarea>
+
+        <button
+        class="btn"
+        onclick="sendMessage()">
+
+            Send Message ✦
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>
+        © 2026 Nama Kamu
+        • Designed with Liquid Glass ✦
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+
+    reveals.forEach(element=>{
+
+        const windowHeight =
+        window.innerHeight;
+
+        const elementTop =
+        element.getBoundingClientRect().top;
+
+        if(elementTop <
+        windowHeight - 80){
+
+            element.classList.add("active");
+
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+revealOnScroll();
+
+
+/* =========================
+   CONTACT BUTTON
+========================= */
+
+function sendMessage(){
+
+    alert(
+        "Pesan kamu berhasil disiapkan ✦ Terima kasih sudah menghubungi!"
+    );
+
+}
+
+</script>
+
+</body>
+</html>    
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
